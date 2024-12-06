@@ -1,0 +1,48 @@
+/* The provided code creates a simple **To-Do List** web application using HTML, CSS, and JavaScript. It starts with a basic HTML structure and includes a form-like interface where users can input tasks and manage them dynamically. The `todo-container` div serves as the central element, styled with CSS to give it a compact and centered layout. */
+/* In the HTML, an input field and a button allow users to add new tasks. When the "Add" button is clicked, the `addTask()` JavaScript function is triggered. This function takes the input value, checks if it's not empty, and then creates a new list item (`<li>`) for the task. Each task is displayed with its text and two buttons: one to mark it as completed and another to delete it. */
+/* The `toggleComplete()` function toggles a "completed" class on the task text, which applies a line-through style to indicate its completion. The `deleteTask()` function removes the corresponding task from the list. These functionalities are achieved using event listeners directly embedded in the buttons via `onclick` attributes. */
+/* Overall, the app provides a simple user interface for task management, demonstrating the dynamic capabilities of the DOM with minimal code. */
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .todo-container { max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ccc; }
+    .task { display: flex; justify-content: space-between; margin-bottom: 5px; }
+    .completed { text-decoration: line-through; }
+  </style>
+</head>
+<body>
+  <div class="todo-container">
+    <h2>To-Do List</h2>
+    <input type="text" id="taskInput" placeholder="Add a task">
+    <button onclick="addTask()">Add</button>
+    <ul id="taskList"></ul>
+  </div>
+  <script>
+    function addTask() {
+      const taskInput = document.getElementById('taskInput');
+      const taskList = document.getElementById('taskList');
+      if (taskInput.value.trim()) {
+        const li = document.createElement('li');
+        li.innerHTML = `<span>${taskInput.value}</span> 
+                        <button onclick="toggleComplete(this)">✔</button>
+                        <button onclick="deleteTask(this)">✖</button>`;
+        li.classList.add('task');
+        taskList.appendChild(li);
+        taskInput.value = '';
+      }
+    }
+    function toggleComplete(button) {
+      button.parentElement.querySelector('span').classList.toggle('completed');
+    }
+    function deleteTask(button) {
+      button.parentElement.remove();
+    }
+  </script>
+</body>
+</html>
