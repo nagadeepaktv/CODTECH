@@ -10,6 +10,8 @@ Mentor:
 
 Overview of the Project
 Project: To-Do List Web Application
+![image](https://github.com/user-attachments/assets/eab33d5f-260d-419a-afe2-b6c0f46e44d7)
+
 
 Objective
 This project aims to create a simple, interactive To-Do List application that allows users to add, manage, and track their tasks using a web browser.
